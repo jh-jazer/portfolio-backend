@@ -1,19 +1,18 @@
-// Load environment variables from .env file
 require('dotenv').config();
 
 const express = require('express');
-const cors = require('cors'); // Import the cors package
-const nodemailer = require('nodemailer'); // Assuming you're using nodemailer for sending emails
+const cors = require('cors'); 
+const nodemailer = require('nodemailer'); 
 const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 4575;
 
-// Middleware
-app.use(cors()); // Enable CORS for all routes
-app.use(bodyParser.json()); // To parse JSON bodies
 
-// POST endpoint for sending emails
+app.use(cors());
+app.use(bodyParser.json());
+
+
 app.post('/send', async (req, res) => {
     const { name, email, message } = req.body;
 
