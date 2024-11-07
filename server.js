@@ -6,12 +6,10 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 4575;
-
+const PORT = process.env.PORT || 4575; // Use Vercel's port in production
 
 app.use(cors());
 app.use(bodyParser.json());
-
 
 app.post('/send', async (req, res) => {
     const { name, email, message } = req.body;
@@ -44,5 +42,5 @@ app.post('/send', async (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
